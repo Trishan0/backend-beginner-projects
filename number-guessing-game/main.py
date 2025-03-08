@@ -1,4 +1,5 @@
 import random
+import time 
 
 welcome_text = "Welcome to the Number Guessing Game!\n"
 exit_text = "If you want to exit the game, type 'exit' or 'q'\n"
@@ -32,8 +33,14 @@ def choose_difficulty():
     while True:
         try:
             difficulty = int(input("Type your choice: "))
-            if 1 <= difficulty <= len(levels):
-                return list(levels.keys())[difficulty - 1], levels[list(levels.keys())[difficulty - 1]]
+            if difficulty == 1:
+                return "easy", levels["easy"]
+            elif difficulty == 2:
+                return "medium", levels["medium"]
+            elif difficulty == 3:
+                return "hard", levels["hard"]
+            # if 1 <= difficulty <= len(levels):
+            #     return list(levels.keys())[difficulty - 1], levels[list(levels.keys())[difficulty - 1]]
             else:
                 print(f"Invalid choice. Please select a number between 1 and {len(levels)}.")
         except ValueError:
@@ -41,6 +48,7 @@ def choose_difficulty():
 
 # Function to handle the user's guesses
 def get_user_guess(selected_number, attempts):
+    start_time = time.time()
     current_attempt = 1
 
     while current_attempt <= attempts:
@@ -51,10 +59,14 @@ def get_user_guess(selected_number, attempts):
             guess = int(guess)
             if guess == selected_number:
                 print(f"Congratulations! You guessed the correct number in {current_attempt} attempts.")
+                end_time = time.time()
+                elapsed_time = end_time - start_time
+                print(f"Time taken: {elapsed_time:.2f} seconds")
                 break
+                
             elif guess < selected_number:
                 print(f"Incorrect! The number is greater than {guess}.")
-            else:
+            elif guess > selected_number:
                 print(f"Incorrect! The number is less than {guess}.")
             
             current_attempt += 1
