@@ -1,21 +1,5 @@
 # number-guessing-game
-<div align="center">
-    <img src="https://socialify.git.ci/Trishan0/backend-beginner-projects/tree/master/number-guessing-game/image?forks=1&issues=1&language=1&name=1&pulls=1&stargazers=1&theme=Auto" alt="Number Guessing Game" width="640" height="320" />
-</div>
-<br><br>
-<br>
 
-<div align='center' style=" display: grid;">
-
-  [![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:sanjanatrishan@gmail.com)
-  [![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Trishan0)
-  [![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/@trishan-fernando)
-  [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/trishan-fernando/)
-</div>
-
----
-
-# Number Guessing Game Project
 
 This is a command-line-based Number Guessing Game written in Python. Players try to guess a randomly generated number between 1 and 100 with different difficulty levels and time constraints.
 
@@ -109,6 +93,7 @@ Medium:
 Hard:
 - 3 attempts
 ```
+Original Project Link: [Number Guessing Game](https://roadmap.sh/projects/number-guessing-game)
 
 ### License
 
