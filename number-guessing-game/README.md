@@ -1,9 +1,23 @@
-I'll create a comprehensive README.md file for the Number Guessing Game project.
+# number-guessing-game
+<div align="center">
+    <img src="https://socialify.git.ci/Trishan0/backend-beginner-projects/tree/master/number-guessing-game/image?forks=1&issues=1&language=1&name=1&pulls=1&stargazers=1&theme=Auto" alt="Number Guessing Game" width="640" height="320" />
+</div>
+<br><br>
+<br>
 
-```markdown:backend-beginner-projects/number-guessing-game/README.md
-# Number Guessing Game
+<div align='center' style=" display: grid;">
 
-A simple command-line number guessing game built with Python where players try to guess a randomly generated number between 1 and 100.
+  [![Gmail](https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white)](mailto:sanjanatrishan@gmail.com)
+  [![Github](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/Trishan0)
+  [![Medium](https://img.shields.io/badge/Medium-12100E?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/@trishan-fernando)
+  [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/trishan-fernando/)
+</div>
+
+---
+
+# Number Guessing Game Project
+
+This is a command-line-based Number Guessing Game written in Python. Players try to guess a randomly generated number between 1 and 100 with different difficulty levels and time constraints.
 
 ## Features
 
@@ -13,46 +27,16 @@ A simple command-line number guessing game built with Python where players try t
 - Multiple games in one session
 - Exit option available at any time
 
-## Requirements
-
-- Python 3.x
-
-## How to Run
-
-1. Make sure you have Python installed on your system
-2. Navigate to the project directory
-3. Run the game using Python:
-   ```bash
-   python main.py
-   ```
-
-## Gameplay Instructions
-
-1. Choose a difficulty level:
-   - Easy: 10 attempts
-   - Medium: 5 attempts
-   - Hard: 3 attempts
-
-2. The game will generate a random number between 1 and 100
-
-3. Enter your guess when prompted
-   - The game will tell you if your guess is too high or too low
-   - Keep guessing until you find the correct number or run out of attempts
-
-4. After each game, you can:
-   - Press Enter to play again
-   - Type 'exit' or 'q' to quit
-
 ## Example Gameplay
 
-```
+```bash
 Welcome to the Number Guessing Game!
 If you want to exit the game, type 'exit' or 'q'
 
 Choose a difficulty:
-1. easy : 10 Chances
-2. medium : 5 Chances
-3. hard : 3 Chances
+1. easy : 10 Chances 
+2. medium : 5 Chances 
+3. hard : 3 Chances 
 Type your choice: 2
 
 Game #1
@@ -68,18 +52,66 @@ Incorrect! The number is greater than 37.
 Attempt 4/5: Enter your guess: 45
 Congratulations! You guessed the correct number in 4 attempts.
 Time taken: 12.34 seconds
-
-You've played 1 game(s). Press Enter to play again or type 'exit' or 'q' to quit:
 ```
 
-## Controls
+## Getting Started
 
-- Enter a number to make a guess
-- Press Enter to play again after a game ends
-- Type 'exit' or 'q' at any time to quit the game
+### Prerequisites
 
+Make sure you have Python installed on your system. You can download it from [python.org](https://www.python.org/).
 
-## License
+### Installation
 
-This project is open source and available under the MIT License.
+1. Clone the repository:
+    ```sh
+    git clone https://github.com/Trishan0/number-guessing-game.git
+    cd number-guessing-game
+    ```
+
+2. Create a virtual environment:
+    ```sh
+    python -m venv venv
+    ```
+
+3. Activate the virtual environment:
+    - On Windows:
+        ```sh
+        venv\Scripts\activate
+        ```
+    - On macOS/Linux:
+        ```sh
+        source venv/bin/activate
+        ```
+
+### Usage
+
+Run the Number Guessing Game:
+```sh
+python main.py
 ```
+
+### Game Controls
+
+- Enter a number (1-100) to make a guess
+- Choose difficulty level (1-3)
+- Type 'exit' or 'q' at any time to quit
+- Press Enter to play again after each game
+
+### Difficulty Levels
+
+```sh
+Easy:
+- 10 attempts
+
+Medium:
+- 5 attempts
+
+Hard:
+- 3 attempts
+```
+
+### License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
