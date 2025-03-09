@@ -48,8 +48,8 @@ Make sure you have Python installed on your system. You can download it from [py
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/Trishan0/number-guessing-game.git
-    cd number-guessing-game
+    git clone https://github.com/Trishan0/backend-beginner-projects.git
+    cd backend-beginner-projects/number-guessing-game
     ```
 
 2. Create a virtual environment:
