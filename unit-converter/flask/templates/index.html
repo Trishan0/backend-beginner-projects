@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Converter</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            width: 360px;
+            max-width: 90%;
+        }
+        
+        .header {
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        h3 {
+            color: #333;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        input, select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background-color: #f9f9f9;
+        }
+        
+        input:focus, select:focus {
+            outline: none;
+            border-color: #4CAF50;
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+            background-color: #fff;
+        }
+        
+        .units-row {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .units-row .form-group {
+            flex: 1;
+        }
+        
+        .swap-btn {
+            display: flex;
+            justify-content: center;
+            margin: 5px 0;
+        }
+        
+        .swap-icon {
+            background-color: #f0f0f0;
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .swap-icon:hover {
+            background-color: #e3e3e3;
+        }
+        
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            border-radius: 6px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        button:hover {
+            background-color: #45a049;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+            transform: translateY(-1px);
+        }
+        
+        button:active {
+            transform: translateY(0);
+            box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 18px;
+            display: none;
+        }
+        
+        .alert {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 6px;
+            text-align: center;
+        }
+        
+        .error {
+            background-color: #ffebee;
+            color: #c62828;
+            border: 1px solid #ef9a9a;
+        }
+        
+        .success {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            border: 1px solid #a5d6a7;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h3>Unit Converter</h3>
+            <div class="subtitle">Convert between different measurement units</div>
+        </div>
+
+        
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert {{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
+        <form action="/" method="post" id="converter-form">
+            <div class="form-group">
+                <label for="value">Value</label>
+                <input type="number" id="value" name="value" placeholder="Enter the value" required>
+            </div>
+            
+            <div class="units-row">
+                <div class="form-group">
+                    <label for="from_unit">From</label>
+                    <select id="from_unit" name="from_unit" required>
+                        {% for unit_type, unit_dict in units.items() %}
+                            <optgroup label="{{ unit_type|title }}">
+                                {% for code, name in unit_dict.items() %}
+                                    <option value="{{ code }}" {% if from_unit == code %}selected{% endif %}>
+                                        {{ name }}
+                                    </option>
+                                {% endfor %}
+                            </optgroup>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <div class="swap-btn">
+                    <div class="swap-icon" title="Swap units" onclick="swapUnits()">
+                        ⇄
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="to_unit">To</label>
+                    <select id="to_unit" name="to_unit" required>
+                        {% for unit_type, unit_dict in units.items() %}
+                            <optgroup label="{{ unit_type|title }}">
+                                {% for code, name in unit_dict.items() %}
+                                    <option value="{{ code }}" {% if to_unit == code %}selected{% endif %}>
+                                        {{ name }}
+                                    </option>
+                                {% endfor %}
+                            </optgroup>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            
+            <button type="submit">Convert</button>
+        </form>
+        
+        <div class="result" {% if result %} style="display: block;" {% endif %}>
+            <p>{{ result|round(2) if result }} {{ to_unit }}</p>
+        </div>
+    </div>
+
+    <script>
+        function swapUnits() {
+            const fromUnit = document.getElementById('from_unit').value;
+            const toUnit = document.getElementById('to_unit').value;
+
+            document.getElementById('from_unit').value = toUnit;
+            document.getElementById('to_unit').value = fromUnit;
+        }
+    </script>
+
+</body>
+</html>
