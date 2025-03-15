@@ -1,5 +1,5 @@
 import requests
-from formatters import print_activity_summary
+from .formatters import print_activity_summary
 
 def get_user_activity(username):
     url = f"https://api.github.com/users/{username}/events"

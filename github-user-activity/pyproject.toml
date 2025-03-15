@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=64.0.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "github-activity"
+version = "0.0.1"
+description = "Simple CLI application written from python for track github user activity"
+readme = "README.md"
+authors = [{ name = "Trishan Fernando", email = "sanjanatrishan@gmail.com" }]
+
+
+[project.scripts]
+github-activity = "github_user_activity.cli:main"

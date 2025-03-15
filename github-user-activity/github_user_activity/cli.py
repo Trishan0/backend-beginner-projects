@@ -1,5 +1,5 @@
 import argparse
-from activity_fetcher import get_user_activity
+from .activity_fetcher import get_user_activity
 
 def main():
     parser = argparse.ArgumentParser(description="Fetch and display GitHub user activity")
