@@ -58,8 +58,8 @@ GitHub Activity Summary for Trishan0
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/Trishan0/github-user-activity.git
-    cd github-user-activity
+    git clone https://github.com/Trishan0/backend-beginner-projects.git
+    cd backend-beginner-projects/github-user-activity
     ```
 
 2. Create a virtual environment:
