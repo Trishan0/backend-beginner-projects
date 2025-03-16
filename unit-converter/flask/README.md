@@ -75,17 +75,27 @@ unit-converter/
 ## Screenshots
 
 <div align="center">
-  <h3>Home Page</h3>
-  <img src="imgs/img.png" alt="Home Page" width="600" style="border-radius: 10px; margin: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+  <div style="display: flex; justify-content: center; gap: 20px; margin-bottom: 20px;">
+    <div>
+      <h3>Home Page</h3>
+      <img src="imgs/img.png" alt="Home Page" width="400" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    </div>
+    <div>
+      <h3>Length Converter</h3>
+      <img src="imgs/img1.png" alt="Length Converter" width="400" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    </div>
+  </div>
   
-  <h3>Length Converter</h3>
-  <img src="imgs/img1.png" alt="Length Converter" width="600" style="border-radius: 10px; margin: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-  
-  <h3>Weight Converter</h3>
-  <img src="imgs/img2.png" alt="Weight Converter" width="600" style="border-radius: 10px; margin: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
-  
-  <h3>Temperature Converter</h3>
-  <img src="imgs/img3.png" alt="Temperature Converter" width="600" style="border-radius: 10px; margin: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+  <div style="display: flex; justify-content: center; gap: 20px;">
+    <div>
+      <h3>Weight Converter</h3>
+      <img src="imgs/img2.png" alt="Weight Converter" width="400" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    </div>
+    <div>
+      <h3>Temperature Converter</h3>
+      <img src="imgs/img3.png" alt="Temperature Converter" width="400" style="border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    </div>
+  </div>
 </div>
 
 <div align="center">
