@@ -74,15 +74,24 @@ unit-converter/
 
 ## Screenshots
 
-[Add your screenshots here]
-<br>
-![Unit Converter](backend-beginner-projects/unit-converter/flask/imgs/img.png)
-<br>
-![Unit Converter](backend-beginner-projects/unit-converter/flask/imgs/img1.png)
-<br>
-![Unit Converter](backend-beginner-projects/unit-converter/flask/imgs/img2.png)
-<br>
-![Unit Converter](backend-beginner-projects/unit-converter/flask/imgs/img3.png)
+<div align="center">
+  <h3>Home Page</h3>
+  <img src="imgs/img.png" alt="Home Page" width="600" style="border-radius: 10px; margin: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+  
+  <h3>Length Converter</h3>
+  <img src="imgs/img1.png" alt="Length Converter" width="600" style="border-radius: 10px; margin: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+  
+  <h3>Weight Converter</h3>
+  <img src="imgs/img2.png" alt="Weight Converter" width="600" style="border-radius: 10px; margin: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+  
+  <h3>Temperature Converter</h3>
+  <img src="imgs/img3.png" alt="Temperature Converter" width="600" style="border-radius: 10px; margin: 20px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+</div>
+
+<div align="center">
+  <p><i>Unit Converter - A simple and elegant way to convert between different units of measurement</i></p>
+</div>
+
 ## Contributing
 
 Feel free to submit issues and enhancement requests.
