@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Unit Converter{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    {% block style %}
+    {% endblock %}
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h3>{% block header_title %}Unit Converter{% endblock %}</h3>
+            <div class="subtitle">Convert between different measurement units</div>
+        </div>
+
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert {{ category }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}
+        {% endblock %}
+        <div class="button-container" style="display: flex; gap: 10px;">
+            <button onclick="window.location.replace('/')" style="background-color: #666;">Home</button>
+            <button type="button" onclick="resetForm()" style="background-color: #666; ">Reset</button>
+        </div>
+        <div class="result" {% if result %} style="display: block;" {% endif %}>
+            <p>{{ result|round(5) if result }} {{ to_unit }}</p>
+        </div>
+    </div>
+
+    <script>
+        function swapUnits() {
+            const fromUnit = document.getElementById('from_unit').value;
+            const toUnit = document.getElementById('to_unit').value;
+
+            document.getElementById('from_unit').value = toUnit;
+            document.getElementById('to_unit').value = fromUnit;
+        }
+
+        function resetForm() {
+            document.getElementById('converter-form').reset();
+            document.getElementById('value').value = '';
+            const resultDiv = document.querySelector('.result');
+            if (resultDiv) {
+                resultDiv.style.display = 'none';
+            }
+            // Remove any flash messages
+            const alerts = document.querySelectorAll('.alert');
+            alerts.forEach(alert => alert.remove());
+        }
+    </script>
+
+</body>
+
+</html>

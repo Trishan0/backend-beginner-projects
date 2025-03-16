@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unit Converter Home</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='home_style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h3>Unit Converter</h3>
+            <div class="subtitle">Choose a converter type</div>
+        </div>
+        
+        <a href="/length" class="converter-btn length">Length Converter</a>
+        <a href="/weight" class="converter-btn weight">Weight Converter</a>
+        <a href="/temperature" class="converter-btn temperature">Temperature Converter</a>
+    </div>
+</body>
+</html>

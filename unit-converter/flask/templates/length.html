@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+{% block style %}
+<style>
+    button {
+        background-color: #4CAF50;
+    }
+
+    button:hover {
+        background-color: #45a049;
+    }
+</style>
+{% endblock %}
+{% block title %}Length Converter{% endblock %}
+{% block header_title %}Length Converter{% endblock %}
+{% block content %}
+<form action="/length" method="post" id="converter-form">
+    <div class="form-group">
+        <label for="value">Value</label>
+        <input type="number" id="value" name="value" placeholder="Enter the value" value="{{ value if value }}"
+            required>
+    </div>
+
+    <div class="units-row">
+        <div class="form-group">
+            <label for="from_unit">From</label>
+            <select id="from_unit" name="from_unit" required>
+                {% for code, name in units.items() %}
+                <option value="{{ code }}" {% if from_unit==code %}selected{% endif %}>
+                    {{ name }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="swap-btn">
+            <div class="swap-icon" title="Swap units" onclick="swapUnits()">
+                ⇄
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="to_unit">To</label>
+            <select id="to_unit" name="to_unit" required>
+                {% for code, name in units.items() %}
+                <option value="{{ code }}" {% if to_unit==code %}selected{% endif %}>
+                    {{ name }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+
+    <button type="submit" style="margin-bottom: 10px;">Convert</button>
+</form>
+{% endblock %}
