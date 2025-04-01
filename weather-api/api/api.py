@@ -2,18 +2,33 @@ from flask import request, Flask, jsonify
 from dotenv import load_dotenv
 import requests
 import os
+import redis
+import json
 
 load_dotenv()
 api = Flask(__name__)
+
 API_KEY = os.getenv('API_KEY')
+
+# Initialize Redis
+redis_client = redis.Redis(host='localhost', port=6379, decode_responses=True)
 
 
 def get_weather(location):
+    # Check if data is already cached
+    cached_data = redis_client.get(location)
+
+    if cached_data:
+        return json.loads(cached_data)
+
+    # If not cached, fetch from API
     url = f'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/{location}?unitGroup=us&include=days&key={API_KEY}&contentType=json'
     response = requests.get(url)
 
     if response.status_code == 200:
-        return response.json()
+        data = response.json()
+        redis_client.setex(location, 3600, json.dumps(data))
+        return data
     else:
         return None
 
@@ -34,4 +49,4 @@ def weather():
 
 
 if __name__ == '__main__':
-    api.run(debug=True, port=5000)
+    api.run(debug=True, port=5001)
