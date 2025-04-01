@@ -9,9 +9,11 @@ load_dotenv()
 api = Flask(__name__)
 
 API_KEY = os.getenv('API_KEY')
+REDIS_HOST = os.getenv('REDIS_HOST','localhost')
+REDIS_PORT = os.getenv('REDIS_PORT',6379)
 
 # Initialize Redis
-redis_client = redis.Redis(host='localhost', port=6379, decode_responses=True)
+redis_client = redis.Redis(host=REDIS_HOST, port=REDIS_PORT, decode_responses=True)
 
 
 def get_weather(location):
