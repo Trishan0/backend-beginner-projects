@@ -25,14 +25,24 @@ def get_weather(location):
 
     # If not cached, fetch from API
     url = f'https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/{location}?unitGroup=us&include=days&key={API_KEY}&contentType=json'
-    response = requests.get(url)
 
-    if response.status_code == 200:
+    try:
+        response = requests.get(url,timeout=5)
+        response.raise_for_status()
+
         data = response.json()
+
+        if 'errorCode' in data:
+            return {"error": "Invalid location or API issue", "details": data.get("message", "Unknown error")}
+
         redis_client.setex(location, 3600, json.dumps(data))
         return data
-    else:
-        return None
+    except requests.exceptions.Timeout:
+        return {"error": "Weather API timeout. Try again later."}
+    except requests.exceptions.HTTPError as err:
+        return {"error": f"Weather API error: {err.response.status_code}"}
+    except requests.exceptions.RequestException as e:
+        return {"error": "Failed to fetch weather data", "details": str(e)}
 
 
 @api.route('/weather', methods=['GET'])
