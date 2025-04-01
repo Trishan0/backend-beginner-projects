@@ -1,5 +1,7 @@
 from flask import request, Flask, jsonify
 from dotenv import load_dotenv
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 import requests
 import os
 import redis
@@ -7,7 +9,13 @@ import json
 
 load_dotenv()
 api = Flask(__name__)
-
+limiter = Limiter(
+    get_remote_address,
+    app=api,
+    storage_uri="redis://localhost:6379",
+    storage_options={"socket_connect_timeout": 30},
+    default_limits=["10 per minute"]
+)
 API_KEY = os.getenv('API_KEY')
 REDIS_HOST = os.getenv('REDIS_HOST','localhost')
 REDIS_PORT = os.getenv('REDIS_PORT',6379)
@@ -46,6 +54,7 @@ def get_weather(location):
 
 
 @api.route('/weather', methods=['GET'])
+@limiter.limit("5 per minute")
 def weather():
     location = request.args.get('location')
 
