@@ -1,0 +1,107 @@
+[
+  {
+    "datetime": "2025-04-17",
+    "sunrise": "06:55:41",
+    "temp": 75.7,
+    "sunset": "19:45:18",
+    "description": "Partly cloudy throughout the day."
+  },
+  {
+    "datetime": "2025-04-18",
+    "sunrise": "06:54:45",
+    "temp": 76.4,
+    "sunset": "19:45:47",
+    "description": "Partly cloudy throughout the day."
+  },
+  {
+    "datetime": "2025-04-19",
+    "sunrise": "06:53:50",
+    "temp": 76.7,
+    "sunset": "19:46:17",
+    "description": "Partly cloudy throughout the day."
+  },
+  {
+    "datetime": "2025-04-20",
+    "sunrise": "06:52:56",
+    "temp": 76.9,
+    "sunset": "19:46:46",
+    "description": "Partly cloudy throughout the day."
+  },
+  {
+    "datetime": "2025-04-21",
+    "sunrise": "06:52:02",
+    "temp": 77.1,
+    "sunset": "19:47:16",
+    "description": "Partly cloudy throughout the day."
+  },
+  {
+    "datetime": "2025-04-22",
+    "sunrise": "06:51:09",
+    "temp": 77.1,
+    "sunset": "19:47:45",
+    "description": "Partly cloudy throughout the day."
+  },
+  {
+    "datetime": "2025-04-23",
+    "sunrise": "06:50:17",
+    "temp": 77.4,
+    "sunset": "19:48:15",
+    "description": "Partly cloudy throughout the day."
+  },
+  {
+    "datetime": "2025-04-24",
+    "sunrise": "06:49:25",
+    "temp": 78,
+    "sunset": "19:48:45",
+    "description": "Partly cloudy throughout the day."
+  },
+  {
+    "datetime": "2025-04-25",
+    "sunrise": "06:48:35",
+    "temp": 78.1,
+    "sunset": "19:49:15",
+    "description": "Clear conditions throughout the day."
+  },
+  {
+    "datetime": "2025-04-26",
+    "sunrise": "06:47:45",
+    "temp": 78.9,
+    "sunset": "19:49:46",
+    "description": "Partly cloudy throughout the day."
+  },
+  {
+    "datetime": "2025-04-27",
+    "sunrise": "06:46:56",
+    "temp": 79.5,
+    "sunset": "19:50:16",
+    "description": "Clear conditions throughout the day."
+  },
+  {
+    "datetime": "2025-04-28",
+    "sunrise": "06:46:08",
+    "temp": 79.6,
+    "sunset": "19:50:47",
+    "description": "Clear conditions throughout the day."
+  },
+  {
+    "datetime": "2025-04-29",
+    "sunrise": "06:45:21",
+    "temp": 79.8,
+    "sunset": "19:51:18",
+    "description": "Clear conditions throughout the day."
+  },
+  {
+    "datetime": "2025-04-30",
+    "sunrise": "06:44:34",
+    "temp": 80,
+    "sunset": "19:51:49",
+    "description": "Clear conditions throughout the day."
+  },
+  {
+    "datetime": "2025-05-01",
+    "sunrise": "06:43:49",
+    "temp": 80.3,
+    "sunset": "19:52:20",
+    "description": "Clearing in the afternoon."
+  }
+]
