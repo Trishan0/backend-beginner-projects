@@ -1,7 +1,7 @@
 import express from 'express';
-import { connectDB } from "./src/database/db";
-import { CONFIG } from "./src/config";
-import { todoRouter } from "./src/routes";
+import { connectDB } from "./database/db";
+import { CONFIG } from "./config";
+import { todoRouter } from "./routes";
 
 const app = express();
 
