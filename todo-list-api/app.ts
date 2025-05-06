@@ -1,6 +1,7 @@
 import express from 'express';
 import { connectDB } from "./src/database/db";
 import {CONFIG} from "./src/config";
+import {router} from "./src/routes";
 
 const app = express();
 
@@ -12,3 +13,6 @@ connectDB().then(()=> {
     console.error('Failed to connect to database', err);
     process.exit(1);
 })
+
+app.use(express.json());
+app.use('/api', router);
