@@ -1,11 +1,12 @@
 import {Request, Response} from "express";
 import {createTodo} from "../services";
+import {ITodo} from "../models";
 
 export const createTodoController = async (req: Request, res: Response) => {
     try {
         const {title, description, date, status} = req.body;
 
-        const newTodo = await createTodo({title, description, date, status});
+        const newTodo: ITodo = await createTodo({title, description, date, status});
 
         return res.status(201).json({
             success: true,
