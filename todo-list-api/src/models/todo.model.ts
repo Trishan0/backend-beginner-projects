@@ -9,7 +9,7 @@ export interface ITodo extends Document {
     updatedAt?: Date;
 }
 
-const taskSchema: Schema<ITodo> = new Schema(
+const todoSchema: Schema<ITodo> = new Schema(
     {
     title: {
         type: String,
@@ -32,4 +32,4 @@ const taskSchema: Schema<ITodo> = new Schema(
     }
 }, {timestamps: true});
 
-export const Todo:Model<ITodo> = mongoose.model<ITodo>("Task", taskSchema);
+export const Todo:Model<ITodo> = mongoose.model<ITodo>("Todo", todoSchema);
