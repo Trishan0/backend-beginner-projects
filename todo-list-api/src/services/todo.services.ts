@@ -6,4 +6,8 @@ const createTodo = async (data: Partial<ITodo>): Promise<ITodo> => {
     return await newTodo.save()
 }
 
-export {createTodo}
+const getAllTodos = async (): Promise<ITodo[]> => {
+    return await Todo.find().sort({ createdAt: -1 });
+}
+
+export {createTodo, getAllTodos}
