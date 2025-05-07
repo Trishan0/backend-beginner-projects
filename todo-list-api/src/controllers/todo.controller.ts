@@ -1,8 +1,8 @@
 import {Request, Response} from "express";
-import {createTodo} from "../services";
+import {createTodo, getAllTodos} from "../services";
 import {ITodo} from "../models";
 
-export const createTodoController = async (req: Request, res: Response): Promise<void> => {
+const createTodoController = async (req: Request, res: Response): Promise<void> => {
     try {
         const {title, description, date, status} = req.body;
 
@@ -30,3 +30,27 @@ export const createTodoController = async (req: Request, res: Response): Promise
         });
     }
 };
+
+const viewTodoController = async (req:Request, res:Response):Promise<void> => {
+    try {
+        const todos: ITodo[] = await getAllTodos()
+        res.status(200).json({
+            success: true,
+            count: todos.length,
+            data: todos
+        });
+
+    } catch (error) {
+        console.error("Error in viewTodoController:", error);
+
+        res.status(500).json({
+            success: false,
+            message: "Server Error",
+            error: error instanceof Error ? error.message : "An unexpected error occurred"
+        })
+    }
+}
+
+
+
+export {createTodoController, viewTodoController}
