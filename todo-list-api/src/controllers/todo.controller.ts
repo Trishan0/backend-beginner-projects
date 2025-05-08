@@ -1,5 +1,5 @@
 import {Request, Response} from "express";
-import {createTodo, getAllTodos} from "../services";
+import {createTodo, getAllTodos, getTodoById} from "../services";
 import {ITodo} from "../models";
 
 const createTodoController = async (req: Request, res: Response): Promise<void> => {
@@ -51,6 +51,30 @@ const viewTodoController = async (req:Request, res:Response):Promise<void> => {
     }
 }
 
+const viewTodoByIdController = async (req:Request, res:Response):Promise<void> => {
+    try {
+        const { id } = req.params;
+        const todo = await getTodoById(parseInt(id));
+        if (!todo) {
+            res.status(404).json({
+                success:false,
+                message: "Todo not found"
+            });
+            return
+        }
+        res.status(200).json({
+            success:true,
+            data: todo
+        })
+    } catch (error) {
+        console.error("Error in viewTodoByIdController:", error);
+        res.status(500).json({
+            success: false,
+            message: "Server Error",
+            error: error instanceof Error ? error.message : "An unexpected error occurred"
+        })
+    }
+}
 
 
-export {createTodoController, viewTodoController}
+export {createTodoController, viewTodoController, viewTodoByIdController}
