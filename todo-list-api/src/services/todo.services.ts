@@ -18,4 +18,7 @@ const updateTodoById = async (todoId: string | number, updatedData: Partial<ITod
     return await Todo.findOneAndUpdate({ todoId }, updatedData, { new: true });
 };
 
-export {createTodo, getAllTodos, getTodoById, updateTodoById}
+const deleteTodoById = async (todoId: string | number): Promise<ITodo | null> => {
+    return await Todo.findOneAndDelete({ todoId });
+}
+export {createTodo, getAllTodos, getTodoById, updateTodoById, deleteTodoById}
