@@ -14,4 +14,8 @@ const getTodoById = async (todoId: string | number): Promise<ITodo | null> => {
     return await Todo.findOne({ todoId });
 };
 
-export {createTodo, getAllTodos, getTodoById}
+const updateTodoById = async (todoId: string | number, updatedData: Partial<ITodo>): Promise<ITodo | null> => {
+    return await Todo.findOneAndUpdate({ todoId }, updatedData, { new: true });
+};
+
+export {createTodo, getAllTodos, getTodoById, updateTodoById}
