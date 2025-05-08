@@ -10,4 +10,8 @@ const getAllTodos = async (): Promise<ITodo[]> => {
     return await Todo.find().sort({ createdAt: -1 });
 }
 
-export {createTodo, getAllTodos}
+const getTodoById = async (todoId: string | number): Promise<ITodo | null> => {
+    return await Todo.findOne({ todoId });
+};
+
+export {createTodo, getAllTodos, getTodoById}
