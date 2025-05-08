@@ -1,5 +1,5 @@
 import {Request, Response} from "express";
-import {createTodo, getAllTodos, getTodoById, updateTodoById, deleteTodoById} from "../services";
+import {createTodo, getPaginatedTodos, getTodoById, updateTodoById, deleteTodoById} from "../services";
 import {ITodo} from "../models";
 
 const createTodoController = async (req: Request, res: Response): Promise<void> => {
@@ -33,10 +33,17 @@ const createTodoController = async (req: Request, res: Response): Promise<void> 
 
 const viewTodoController = async (req:Request, res:Response):Promise<void> => {
     try {
-        const todos: ITodo[] = await getAllTodos()
+        const page: number = parseInt(req.query.page as string) || 1;
+        const limit:number = parseInt(req.query.limit as string) || 0;
+
+        const { todos, totalCount } = await getPaginatedTodos(page, limit);
+
         res.status(200).json({
             success: true,
             count: todos.length,
+            total:totalCount,
+            page,
+            limit,
             data: todos
         });
 
