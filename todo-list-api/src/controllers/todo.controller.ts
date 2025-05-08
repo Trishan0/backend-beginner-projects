@@ -1,5 +1,5 @@
 import {Request, Response} from "express";
-import {createTodo, getAllTodos, getTodoById, updateTodoById} from "../services";
+import {createTodo, getAllTodos, getTodoById, updateTodoById, deleteTodoById} from "../services";
 import {ITodo} from "../models";
 
 const createTodoController = async (req: Request, res: Response): Promise<void> => {
@@ -105,4 +105,33 @@ const updateTodoByIdController = async (req:Request, res:Response):Promise<void>
     }
 }
 
-export {createTodoController, viewTodoController, viewTodoByIdController, updateTodoByIdController}
+const deleteTodoByIdController = async (req:Request, res:Response):Promise<void>=>{
+    try {
+        const { id } = req.params;
+
+        const existingTodo = await getTodoById(parseInt(id));
+        if (!existingTodo) {
+            res.status(404).json({
+                success: false,
+                message: "Todo not found"
+            });
+            return;
+        }
+        const deletedTodo = await deleteTodoById(parseInt(id));
+        res.status(200).json({
+            success:true,
+            message:"Successfully Deleted the todo",
+            deletedTodo:deletedTodo
+        })
+    } catch (error) {
+        console.error("Error in deleteTodoByIdController:", error);
+        res.status(500).json({
+            success: false,
+            message: "Server Error",
+            error: error instanceof Error ? error.message : "An unexpected error occurred"
+        })
+    }
+}
+
+
+export {createTodoController, viewTodoController, viewTodoByIdController, updateTodoByIdController, deleteTodoByIdController}
