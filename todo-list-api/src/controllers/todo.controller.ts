@@ -1,5 +1,5 @@
 import {Request, Response} from "express";
-import {createTodo, getAllTodos, getTodoById} from "../services";
+import {createTodo, getAllTodos, getTodoById, updateTodoById} from "../services";
 import {ITodo} from "../models";
 
 const createTodoController = async (req: Request, res: Response): Promise<void> => {
@@ -76,5 +76,33 @@ const viewTodoByIdController = async (req:Request, res:Response):Promise<void> =
     }
 }
 
+const updateTodoByIdController = async (req:Request, res:Response):Promise<void> => {
+    try {
+        const { id } = req.params;
+        const updatedData = req.body
 
-export {createTodoController, viewTodoController, viewTodoByIdController}
+        const existingTodo = await getTodoById(parseInt(id));
+        if (!existingTodo) {
+            res.status(404).json({
+                success: false,
+                message: "Todo not found"
+            });
+            return;
+        }
+        const updatedTodo = await updateTodoById(parseInt(id), updatedData)
+        res.status(200).json({
+            success: true,
+            message: "Todo updated successfully",
+            data: updatedTodo
+        })
+    } catch (error) {
+        console.error("Error in updateTodoByIdController:", error);
+        res.status(500).json({
+            success: false,
+            message: "Server Error",
+            error: error instanceof Error ? error.message : "An unexpected error occurred"
+        })
+    }
+}
+
+export {createTodoController, viewTodoController, viewTodoByIdController, updateTodoByIdController}
