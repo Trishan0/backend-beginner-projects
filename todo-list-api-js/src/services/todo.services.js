@@ -8,4 +8,9 @@ const createTodoService = async (data)=>{
 const getAllTodoService = async ()=>{
     return await Todo.find({}).sort({createdAt: -1});
 }
-export {createTodoService, getAllTodoService};
+
+const getTodoByIdService = async (todoId) => {
+    return await Todo.findOne({ id: todoId });
+}
+
+export {createTodoService, getAllTodoService, getTodoByIdService};
