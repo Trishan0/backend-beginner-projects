@@ -5,4 +5,7 @@ const createTodoService = async (data)=>{
     return await newTodo.save();
 }
 
-export {createTodoService};
+const getAllTodoService = async ()=>{
+    return await Todo.find({}).sort({createdAt: -1});
+}
+export {createTodoService, getAllTodoService};
