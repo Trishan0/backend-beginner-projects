@@ -4,16 +4,20 @@
   "description": "Simple CRUD REST API for todo list",
   "main": "src/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/app.js"
   },
   "keywords": [],
   "author": "Trishan Fernando",
   "license": "ISC",
   "type": "module",
   "dependencies": {
+    "bcryptjs": "^3.0.2",
     "dotenv": "^16.5.0",
     "express": "^5.1.0",
-    "mongoose": "^8.14.2"
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.14.2",
+    "mongoose-sequence": "^6.0.1"
   },
   "devDependencies": {
     "nodemon": "^3.1.10"
