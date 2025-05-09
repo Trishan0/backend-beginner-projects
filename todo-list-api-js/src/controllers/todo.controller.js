@@ -1,7 +1,13 @@
-import {createTodoService, getAllTodoService, getTodoByIdService} from "../services/todo.services.js";
+import {
+    createTodoService,
+    getAllTodoService,
+    getTodoByIdService,
+    updateTodoByIdService,
+    deleteTodoByIdService
+} from "../services/todo.services.js";
 
-const createTodoController = async (req, res)=>{
-    try{
+const createTodoController = async (req, res) => {
+    try {
         const {title, description} = req.body;
         if (!title) {
             res.status(400).json({
@@ -14,7 +20,7 @@ const createTodoController = async (req, res)=>{
             success: true,
             data: newTodo
         });
-    }catch (error) {
+    } catch (error) {
         console.error("Error in createTodoController:", error);
 
         res.status(500).json({
@@ -26,7 +32,7 @@ const createTodoController = async (req, res)=>{
 }
 
 //get all todos
-const getAllTodoController = async (req, res)=>{
+const getAllTodoController = async (req, res) => {
     try {
         const todos = await getAllTodoService()
         res.status(200).json({
@@ -47,7 +53,7 @@ const getAllTodoController = async (req, res)=>{
 //get todos by Id
 const getTodoByIdController = async (req, res) => {
     try {
-        const { id } = req.params;
+        const {id} = req.params;
         const todoData = await getTodoByIdService(parseInt(id));
 
         if (!todoData) {
@@ -72,4 +78,57 @@ const getTodoByIdController = async (req, res) => {
     }
 };
 
-export {createTodoController, getAllTodoController, getTodoByIdController}
+//update todos by it's id
+const updateTodoByIdController = async (req, res) => {
+    try {
+        const {id} = req.params;
+        const updatedData = req.body;
+
+        const todoData = await updateTodoByIdService(parseInt(id), updatedData);
+
+        res.status(200).json({
+            success: true,
+            message: "Todo updated successfully",
+            Updated_data: todoData
+        })
+    } catch (error) {
+        console.error("Error in updateTodoByIdController:", error);
+        return res.status(500).json({
+            success: false,
+            message: "Server Error",
+            error: error instanceof Error ? error.message : "An unexpected error occurred"
+        });
+    }
+}
+
+//delete todos by it's id
+const deleteTodoByIdController = async (req, res) => {
+    try {
+        const {id} = req.params;
+
+        const existingTodo = await getTodoByIdService(parseInt(id));
+        if (!existingTodo) {
+            res.status(404).json({
+                success: false,
+                message: "Todo not found"
+            });
+            return;
+        }
+        const deletedTodo = await deleteTodoByIdService(parseInt(id));
+        res.status(200).json({
+            success: true,
+            message: "Successfully Deleted the todo",
+            deletedTodo: deletedTodo
+        })
+    } catch (error) {
+        console.error("Error in deleteTodoByIdController:", error);
+        res.status(500).json({
+            success: false,
+            message: "Server Error",
+            error: error instanceof Error ? error.message : "An unexpected error occurred"
+        })
+    }
+}
+
+
+export {createTodoController, getAllTodoController, getTodoByIdController, updateTodoByIdController, deleteTodoByIdController}
