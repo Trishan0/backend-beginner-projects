@@ -1,4 +1,4 @@
-import {createTodoService} from "../services/todo.services.js";
+import {createTodoService, getAllTodoService} from "../services/todo.services.js";
 
 const createTodoController = async (req, res)=>{
     try{
@@ -25,4 +25,23 @@ const createTodoController = async (req, res)=>{
     }
 }
 
-export {createTodoController}
+//get all todos
+const getAllTodoController = async (req, res)=>{
+    try {
+        const id = req.params.id;
+        const todos = await getAllTodoService(parseInt(id))
+        res.status(200).json({
+            success: true,
+            data: todos
+        })
+
+    } catch (error) {
+        console.error("Error in getAllTodoController:", error);
+        res.status(500).json({
+            success: false,
+            message: "Server Error",
+            error: error instanceof Error ? error.message : "An unexpected error occurred"
+        })
+    }
+}
+export {createTodoController,getAllTodoController}
