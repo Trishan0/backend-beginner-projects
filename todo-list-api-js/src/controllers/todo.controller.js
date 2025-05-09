@@ -1,6 +1,6 @@
 import {
     createTodoService,
-    getAllTodoService,
+    getPaginatedTodoService,
     getTodoByIdService,
     updateTodoByIdService,
     deleteTodoByIdService
@@ -34,9 +34,15 @@ const createTodoController = async (req, res) => {
 //get all todos
 const getAllTodoController = async (req, res) => {
     try {
-        const todos = await getAllTodoService()
+        const page = parseInt(req.query.page) || 1;
+        const limit = parseInt(req.query.limit) || 0;
+
+        const { todos, totalCount } = await getPaginatedTodoService(page, limit)
         res.status(200).json({
             success: true,
+            total:totalCount,
+            page,
+            limit,
             data: todos
         })
 
