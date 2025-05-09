@@ -13,4 +13,11 @@ const getTodoByIdService = async (todoId) => {
     return await Todo.findOne({ id: todoId });
 }
 
-export {createTodoService, getAllTodoService, getTodoByIdService};
+const updateTodoByIdService = async (todoId, updatedData) => {
+    return await Todo.findOneAndUpdate({id:todoId},{updatedData}, {new:true})
+}
+
+const deleteTodoByIdService = async (todoId) => {
+    return await Todo.findOneAndDelete({id:todoId})
+}
+export {createTodoService, getAllTodoService, getTodoByIdService, updateTodoByIdService, deleteTodoByIdService};
