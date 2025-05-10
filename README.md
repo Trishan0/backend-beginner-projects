@@ -8,4 +8,4 @@
 <br>
 [Weather Api](https://roadmap.sh/projects/weather-api-wrapper-service)
 <br>
-[ToDo List API](https://github.com/Trishan0/backend-beginner-projects/tree/master/todo-list-api-js)
+[ToDo List API](https://roadmap.sh/projects/todo-list-api)
